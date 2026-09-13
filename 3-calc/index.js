@@ -6,9 +6,9 @@ const secondArg = process.argv[3];
 const thirdArg = process.argv[4];
 
 if (thirdArg === 'add') {
-    console.log(add(firstArg, secondArg));
+    console.log(add(Number(firstArg), Number(secondArg)));
 }
 
 if (thirdArg === 'multiply') {
-    console.log(multiply(firstArg, secondArg));
+    console.log(multiply(Number(firstArg), number(secondArg)));
 }
