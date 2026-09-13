@@ -10,5 +10,5 @@ if (thirdArg === 'add') {
 }
 
 if (thirdArg === 'multiply') {
-    console.log(multiply(Number(firstArg), number(secondArg)));
+    console.log(multiply(Number(firstArg), Number(secondArg)));
 }
