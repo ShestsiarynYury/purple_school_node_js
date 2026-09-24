@@ -1,6 +1,6 @@
 function main() {
     performance.mark('main_start');
-    const results = [];
+    let results = [];
     const array = [];
     for (let i = 1; i <= 300000; i++) {
         array.push(i);
