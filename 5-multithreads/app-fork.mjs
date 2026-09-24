@@ -9,7 +9,7 @@ function act(goupNumber) {
         const forkProcess = fork('./5-multithreads/fork.mjs');
         forkProcess.send({ count: MAX_NUMBER, cores: numCores, group: goupNumber });
         forkProcess.on('message', (message) => {
-            resolve(error);
+            resolve(message);
         });
     });
 };
@@ -19,7 +19,7 @@ async function main() {
     const results = await Promise.all(
         Array.from({ length: numCores }, (_, index) => {
             const groupNumber = index + 1;
-            act(groupNumber);
+            return act(groupNumber);
         })
     );
     console.log(results);
