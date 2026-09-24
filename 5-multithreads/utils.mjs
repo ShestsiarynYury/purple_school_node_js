@@ -8,28 +8,6 @@ export function getNumbers(array) {
     }, 0);
 };
 
-export function chunkNumbers(max, groupsCount) {
-  // Вычисляем базовый размер одной группы
-    const size = Math.floor(max / groupsCount);
-  // Находим остаток, который нужно будет распределить, если max не делится нацело
-    let remainder = max % groupsCount;
-
-    const result = [];
-    let currentNumber = 1;
-
-    for (let i = 0; i < groupsCount; i++) {
-    // Каждая группа берет базовый размер + 1 элемент из остатка (если он есть)
-        const currentGroupSize = size + (remainder > 0 ? 1 : 0);
-        remainder--;
-
-    // Создаем и заполняем текущую группу
-        const group = Array.from({ length: currentGroupSize }, () => currentNumber++);
-        result.push(group);
-    }
-
-    return result;
-}
-
 export function chunkNumbersGroup(max, groupsCount, targetGroup = null) {
   const size = Math.floor(max / groupsCount);
   let remainder = max % groupsCount;
