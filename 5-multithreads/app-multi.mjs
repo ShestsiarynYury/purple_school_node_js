@@ -19,9 +19,9 @@ async function main() {
     try {
         performance.mark('main_start');
         const result = await Promise.all([
-            act(1, 100),
-            act(101, 200),
-            act(201, 300)
+            act(1, 100000),
+            act(100001, 200000),
+            act(200001, 300000)
         ]);
         console.log(result);
         performance.mark('main_end');

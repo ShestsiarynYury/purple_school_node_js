@@ -4,5 +4,11 @@ export function generate(min, max) {
         array.push(i);
     }
 
-    return array;
+    return array.reduce((acc, current) => {
+        if (current % 3 === 0) {
+            acc += 1;
+        }
+
+        return acc;
+    }, 0);
 }
