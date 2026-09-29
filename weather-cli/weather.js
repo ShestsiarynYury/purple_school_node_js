@@ -48,10 +48,10 @@ const getForecast = async () => {
         const language = process.env.LANGUAGE ?? await getKeyValue(TOKEN_DICTIONARY.language);
         const city = process.env.CITY ?? await getKeyValue(TOKEN_DICTIONARY.city);
         const cities = city.split(',');
-        cities.forEach(async(c) => {
+        for (const c of cities) {
             const weather = await getWeather(c, language);
             printWeather(weather, getIcon(weather.weather[0].icon));
-        });
+        }
     } catch (error) {
         if (error?.response?.status == 404) {
             printError('Неверно указан город');
