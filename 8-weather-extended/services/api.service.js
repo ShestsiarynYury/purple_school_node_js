@@ -16,7 +16,7 @@ export const getIcon = (icon) => {
     }
 };
 
-export const getWeather = async (city, language) => {
+export const getWeather = async (city) => {
     const token = await getKeyValue(TOKEN_DICTIONARY.token);
     if (!token) {
         throw new Error('Не задан ключ API, задайте его через комманду -t [API_KEY]');
@@ -25,8 +25,8 @@ export const getWeather = async (city, language) => {
         params: {
             q: city,
             appid: token,
-            units: 'metric',
-            lang: language ?? 'ru'
+            lang: 'ru',
+            units: 'metric'
         }
     });
     console.log(data);
