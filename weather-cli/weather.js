@@ -47,9 +47,9 @@ const getForecast = async () => {
     try {
         const language = process.env.LANGUAGE ?? await getKeyValue(TOKEN_DICTIONARY.language);
         const city = process.env.CITY ?? await getKeyValue(TOKEN_DICTIONARY.city);
-        cities = city.split(',');
+        const cities = city.split(',');
         cities.forEach(async(c) => {
-            const weather = await getWeather(city, language);
+            const weather = await getWeather(c, language);
             printWeather(weather, getIcon(weather.weather[0].icon));
         });
     } catch (error) {
@@ -76,7 +76,7 @@ const initCLI = () => {
         return saveToken(args.t);
     }
     if (args.l) {
-        return saveToken(args.l);
+        return saveLanguage(args.l);
     }
     return getForecast();
 };
