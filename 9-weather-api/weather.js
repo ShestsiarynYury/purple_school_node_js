@@ -66,6 +66,23 @@ export const getForecast = async () => {
     }
 }
 
+export const getForecastByCity = async (city) => {
+    try {
+        const language = process.env.LANGUAGE ?? await getKeyValue(TOKEN_DICTIONARY.language);
+        const weather = await getWeather(city, language);
+
+        return weather;
+    } catch (error) {
+        if (error?.response?.status == 404) {
+            printError('Неверно указан город');
+        } else if (error?.response?.status == 401) {
+            printError('Неверно указан токен');
+        } else {
+            printError(error.message);
+        }
+    }
+}
+
 // const initCLI = () => {
 //     const args = getArgs(process.argv);
 
